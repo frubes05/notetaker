@@ -3,7 +3,7 @@ import CodeMirror from "@uiw/react-codemirror";
 import { markdown, markdownLanguage } from "@codemirror/lang-markdown";
 import { languages } from "@codemirror/language-data";
 
-export default function NoteEditor({ onSave }: { onSave: Function }) {
+export default function NoteEditor({ onSave }: { onSave: (note: { title: string; content: string }) => void }) {
   const [code, setCode] = useState<string>("");
   const [title, setTitle] = useState<string>("");
 
