@@ -35,7 +35,7 @@ export default function NoteEditor({ onSave }: { onSave: Function }) {
       <div className="card-actions justify-end">
         <button
           onClick={() => {
-            onSave({
+            void onSave({
               title,
               content: code,
             });

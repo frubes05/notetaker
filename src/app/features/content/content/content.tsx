@@ -18,7 +18,7 @@ export default function Content(): ReactElement {
   
   const createTopic = api.topic.create.useMutation({
     onSuccess: () => {
-        refetch();
+        void refetch();
     }
   });
 
@@ -32,13 +32,13 @@ export default function Content(): ReactElement {
   
   const createNote = api.note.create.useMutation({
     onSuccess: () => {
-        refetchNotes();
+        void refetchNotes();
     }
   });
 
   const deleteNote = api.note.delete.useMutation({
     onSuccess: () => {
-      refetchNotes();
+      void refetchNotes();
     },
   });
 
@@ -82,14 +82,14 @@ export default function Content(): ReactElement {
               <div key={note.id} className="mt-5">
                 <NoteCard
                   note={note}
-                  onDelete={() => deleteNote.mutate({ id: note.id })}
+                  onDelete={() => void deleteNote.mutate({ id: note.id })}
                 />
               </div>
             ))}
           </div>
 
           <NoteEditor onSave={({ title, content }: { title: string, content: string }) => {
-            createNote.mutate({
+            void createNote.mutate({
               title,
               content,
               topicId: selectedTopic?.id ?? "",
